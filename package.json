@@ -48,6 +48,6 @@
         "onchange": "^7.1.0",
         "prettier": "^2.8.6",
         "sass": "^1.59.3",
-        "spicetify-creator": "^1.0.12"
+        "spicetify-creator": "^1.0.14"
     }
 }
