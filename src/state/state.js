@@ -27,11 +27,11 @@ const State = (() => {
         }
 
         AppState.path = Spicetify.Platform.History.location.pathname
-        AppState.uri = Spicetify.Player.data.track.uri
+        AppState.uri = Spicetify.Player.data.item.uri
         AppState.uid = Utils.path.uriToUID(AppState.uri)
         AppState.pageType = stateUtils.pathToType()
-        AppState.islocal = Spicetify.Player.data.track.metadata.is_local === "true"
-        AppState.image = Spicetify.Player.data.track.metadata.image_xlarge_url
+        AppState.islocal = Spicetify.Player.data.item.metadata.is_local === "true"
+        AppState.image = Spicetify.Player.data.item.metadata.image_xlarge_url
         AppState.filterCSS = LocalStorage.config.bannerBlurValue == 0 ? "unset" : `blur(${LocalStorage.config.bannerBlurValue}px)`
 
         stateUtils.updateDomClasses()
@@ -47,7 +47,7 @@ const State = (() => {
 
     function onSongChange(event) {
         AppState.changeStateSrc = "songchange"
-        AppState.islocal = event.data.track.metadata.is_local === "true"
+        AppState.islocal = event.data.item.metadata.is_local === "true"
     }
 
     return {

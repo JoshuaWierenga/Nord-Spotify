@@ -100,9 +100,9 @@ async function updateState(rawData) {
 
     if (State.app.changeStateSrc === "songchange" || !State.app.isBannerPage || LocalStorage.config.songBannersOnly) {
         if (State.app.islocal) {
-            State.app.uri = rawData.data.track.uri
+            State.app.uri = rawData.data.item.uri
         } else {
-            State.app.uri = rawData.data.track.metadata.album_uri
+            State.app.uri = rawData.data.item.metadata.album_uri
         }
 
         State.app.uid = Utils.path.uriToUID(State.app.uri) // this wrapped inside a try catch block. idk why
@@ -114,7 +114,7 @@ async function updateState(rawData) {
         State.app.previousUri = State.app.uri
         State.app.shouldChangeProp = true
 
-        State.app.image = rawData.data.track.metadata.image_xlarge_url
+        State.app.image = rawData.data.item.metadata.image_xlarge_url
     } else if (State.app.isBannerPage) {
         State.app.uri = Utils.path.pathToURI(State.app.path)
         State.app.uid = Utils.path.pathToUID(State.app.path)
@@ -142,7 +142,7 @@ async function fetchBannerImage(rawData = Spicetify.Player) {
             rawData = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/${State.app.pageType}/${State.app.uid}`)
             return rawData.images[0]["url"]
         } else {
-            return rawData.data.track.metadata.image_xlarge_url
+            return rawData.data.item.metadata.image_xlarge_url
         }
     } catch (err) {
         console.error(`Nord:unexpected: Can't fetch banner image > from: \`fetchBannerImage()\` > error: ${err}`)
