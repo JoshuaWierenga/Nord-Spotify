@@ -7,7 +7,7 @@ Does work through at least Spicetify 2.30.0 now.
 
 Nord Themed Spotify
 
-Wanna discuss or having issues with Nord? Ping `@Tetrax-10` on Discord
+~~Wanna discuss or having issues with Nord? Ping `@Tetrax-10` on Discord~~
 
 <p align="left"><a href="https://discord.gg/DaUbPmbDwr"><img src="https://raw.githubusercontent.com/Tetrax-10/Nord-Spotify/master/assets/join-discord-button.png" width="150px"></a></p>
 
