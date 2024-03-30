@@ -118,10 +118,7 @@ const DynamicColors = (() => {
     async function fetchDynamicColor(dynamicImageUri) {
         const { fetchExtractedColors } = Spicetify.GraphQL.Definitions
         try {
-            let rawData = await Spicetify.GraphQL.Request(
-                fetchExtractedColors,
-                { uris: [dynamicImageUri] },
-            )
+            let rawData = await Spicetify.GraphQL.Request(fetchExtractedColors, { uris: [dynamicImageUri] })
             let extractedColors = rawData.data.extractedColors[0]
             return { dark: extractedColors.colorDark.hex, light: extractedColors.colorLight.hex, raw: extractedColors.colorRaw.hex }
         } catch (err) {
