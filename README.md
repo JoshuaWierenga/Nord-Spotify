@@ -1,9 +1,8 @@
-# 📦 Archiving this theme repo due to time constraints. Feel free to fork and continue the development! 🍴
-
-Possibly supported? Depends on what breaks and if I can get fix the sidebars for at least Spotify 1.2.14 to 1.2.17.
-Does work through at least Spicetify 2.36.1 now.
+Supported provided I have the time and knowledge to fix any issues that arise.
+Tested with Spotify 1.2.13 to 1.2.16 with Spicetify 2.36.1.
 
 <br>Original readme follows:
+# 📦 Archiving this theme repo due to time constraints. Feel free to fork and continue the development! 🍴
 
 # Nord (with Dynamic Theming)
 
