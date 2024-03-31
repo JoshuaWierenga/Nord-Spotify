@@ -1,3 +1,5 @@
+import Api from "../services/api"
+
 const PreloadUtils = (() => {
     let expFeaturesData
     try {
@@ -9,6 +11,10 @@ const PreloadUtils = (() => {
     async function isLibX() {
         if (!Spicetify.RemoteConfigResolver) {
             return (await waitForElement("body.ylx", 1000)) ? true : false
+        }
+
+        if (await Api.app.laterThan("1.2.14")) {
+            return true
         }
 
         if (expFeaturesData.enableYLXSidebar === undefined) return false

@@ -4,14 +4,13 @@ import Api from "../../services/api"
 import Shared from "../../shared/shared"
 
 const UiMode = (() => {
-    function changeUiMode(mode) {
+    async function changeUiMode(mode) {
         let features
 
         switch (mode) {
             case "libx":
                 features = {
                     enable: [
-                        "enableYLXSidebar",
                         "enableWhatsNewFeed",
                         "enableRightSidebar",
                         "enableRightSidebarTransitionAnimations",
@@ -19,6 +18,9 @@ const UiMode = (() => {
                         "enableRightSidebarCredits",
                     ],
                     disable: ["enableRightSidebarExtractedColors"],
+                }
+                if (await Api.app.earlierThan("1.2.14")) {
+                    features.enable.push("enableYLXSidebar")
                 }
                 break
             default:
@@ -32,7 +34,10 @@ const UiMode = (() => {
     }
 
     async function createUiModeOptions() {
-        Shared.uiModeOptions = { oldui: "Stock" }
+        Shared.uiModeOptions = {}
+        if (await Api.app.earlierThan("1.2.14")) {
+            Shared.uiModeOptions.oldui = "Stock"
+        }
 
         if (await Api.app.laterThan("1.2.9")) {
             Shared.uiModeOptions.libx = "Library X"
