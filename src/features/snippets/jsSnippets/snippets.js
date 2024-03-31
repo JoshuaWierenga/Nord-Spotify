@@ -2,12 +2,23 @@ import LocalStorage from "../../../localStorage/localStorage"
 import Utils from "../../../utils/utils"
 import { changeKeyBind } from "./jsSnippetsUtils"
 
+let quickSearchOn = false
+let searchOn = false
+
 export function toggleQuickSearchKeyBind() {
-    changeKeyBind({ ctrl: true, key: "space" }, { ctrl: true, key: "k" }, LocalStorage.config.quickSearch)
+    quickSearchOn |= LocalStorage.config.quickSearch
+    if (!quickSearchOn) {
+        return
+    }
+    changeKeyBind("mod+space", "mod+k", LocalStorage.config.quickSearch)
 }
 
 export function toggleSearchPageKeyBind() {
-    changeKeyBind({ ctrl: true, key: "/" }, { ctrl: true, key: "l" }, LocalStorage.config.search)
+    searchOn |= LocalStorage.config.search
+    if (!searchOn) {
+        return
+    }
+    changeKeyBind("mod+/", "mod+l", LocalStorage.config.search)
 }
 
 export async function toggleRedoKeyBind() {

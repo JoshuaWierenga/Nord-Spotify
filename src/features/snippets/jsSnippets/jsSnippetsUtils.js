@@ -1,10 +1,12 @@
 export function changeKeyBind(newKey, oldKey, shouldMap) {
     try {
-        if (shouldMap) {
-            Spicetify.Keyboard.changeShortcut(oldKey, newKey)
-        } else {
-            Spicetify.Keyboard.changeShortcut(newKey, oldKey)
-        }
+        const callbacks = Spicetify.Mousetrap.trigger()._directMap
+        const fromKey = shouldMap ? oldKey : newKey
+        const toKey = shouldMap ? newKey : oldKey
+        const callbackName = Object.keys(callbacks).find(key => key.startsWith(fromKey))
+
+        Spicetify.Mousetrap.bind(toKey, callbacks[callbackName])
+        Spicetify.Mousetrap.unbind(fromKey)
     } catch (err) {
         console.error(`Nord:unexpected: can't change keybind > from: \`changeKeyBind()\` > error: ${err}`)
     }
